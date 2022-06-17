@@ -17,29 +17,20 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     @IBAction func buttton1Clicked(_ sender: Any) {
+        findMatch(countryInButton: countries[0])
     }
     
     @IBAction func buttton2Clicked(_ sender: Any) {
+        findMatch(countryInButton: countries[1])
     }
     
     @IBAction func buttton3Clicked(_ sender: Any) {
+        findMatch(countryInButton: countries[2])
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        countries.append("estonia")
-        countries.append("france")
-        countries.append("germany")
-        countries.append("ireland")
-        countries.append("italy")
-        countries.append("monaco")
-        countries.append("nigeria")
-        countries.append("poland")
-        countries.append("russia")
-        countries.append("spain")
-        countries.append("uk")
-        countries.append("us") */
         
         countries += ["estonia","france","germany","ireland","italy","monaco","nigeria","poland","russia","spain","uk","us"]
         
@@ -60,7 +51,44 @@ class ViewController: UIViewController {
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
-        title = countries[correctAnswer].uppercased()
+        title = "Find \"\(countries[correctAnswer].uppercased())\" From Below Flags "
+    }
+    
+    func findMatch(countryInButton: String) {
+        var matchFound = false
+        let targetCountry = countries[correctAnswer]
+        if(countryInButton == targetCountry){
+            score += 1
+            matchFound = true
+        }
+        var alertTitle = ""
+        var alertMessage = ""
+        if(matchFound){
+            alertTitle = "Bingo!!!"
+            alertMessage =  "Your Answer is Correct and your current score is \(score)"
+        }else{
+            alertTitle = "Oooops!!!"
+            alertMessage =  "This is In-Correct"
+        }
+        
+        // Create the alert controller
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+
+         // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+             UIAlertAction in
+            self.askQuestions()
+         }
+        let cancelAction = UIAlertAction(title: "Try again?", style: UIAlertAction.Style.cancel) {
+             UIAlertAction in
+         }
+
+         // Add the actions
+         alertController.addAction(okAction)
+         alertController.addAction(cancelAction)
+
+         // Present the controller
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
