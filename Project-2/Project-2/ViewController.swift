@@ -16,18 +16,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
-    @IBAction func buttton1Clicked(_ sender: Any) {
-        findMatch(countryInButton: countries[0])
-    }
-    
-    @IBAction func buttton2Clicked(_ sender: Any) {
-        findMatch(countryInButton: countries[1])
-    }
-    
-    @IBAction func buttton3Clicked(_ sender: Any) {
-        findMatch(countryInButton: countries[2])
-
-    }
+    var questionsCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,58 +26,53 @@ class ViewController: UIViewController {
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
         button3.layer.borderWidth = 1
-        
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
-        
         askQuestions()
+        
     }
     
-    func askQuestions(){
+    func askQuestions(action : UIAlertAction! = nil){
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
-        title = "Find \"\(countries[correctAnswer].uppercased())\" From Below Flags "
+        title = "Find \(countries[correctAnswer].uppercased())\'s Flag ? "
     }
     
-    func findMatch(countryInButton: String) {
-        var matchFound = false
-        let targetCountry = countries[correctAnswer]
-        if(countryInButton == targetCountry){
-            score += 1
-            matchFound = true
-        }
-        var alertTitle = ""
-        var alertMessage = ""
-        if(matchFound){
-            alertTitle = "Bingo!!!"
-            alertMessage =  "Your Answer is Correct and your current score is \(score)"
-        }else{
-            alertTitle = "Oooops!!!"
-            alertMessage =  "This is In-Correct"
-        }
+    func restartGame(action : UIAlertAction! = nil){
+        score = 0
+        askQuestions()
+    }
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
         
-        // Create the alert controller
-        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        var title: String
+        questionsCount += 1
+        if sender.tag == correctAnswer {
+            title = "Correct"
+            score += 1
+        }else {
+            title = "Incorrect"
+            score -= 1
+            let ac = UIAlertController(title: "Wrong!!", message: "This is flag of \(countries[sender.tag])", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
+            present(ac, animated: true)
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score : \(score)", style: .plain, target: self, action: nil)
 
-         // Create the actions
-        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-             UIAlertAction in
-            self.askQuestions()
-         }
-        let cancelAction = UIAlertAction(title: "Try again?", style: UIAlertAction.Style.cancel) {
-             UIAlertAction in
-         }
+        if questionsCount == 10 {
+            let ac = UIAlertController(title: "Game Over", message: "You have reached maximum question limit!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Restart?", style: .default,handler: restartGame))
+            present(ac, animated: true)
+        }else {
+            let ac = UIAlertController(title: title, message: "Your Score is = \(score)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
+            present(ac, animated: true)
+        }
 
-         // Add the actions
-         alertController.addAction(okAction)
-         alertController.addAction(cancelAction)
-
-         // Present the controller
-        self.present(alertController, animated: true, completion: nil)
     }
 }
 

@@ -21,23 +21,23 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us" imagePadding="0.0"/>
                                 <connections>
-                                    <action selector="buttton1Clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLm-CS-USh"/>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EWS-2j-Y64"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxa-Ur-uDe">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxa-Ur-uDe">
                                 <rect key="frame" x="95" y="385" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="france"/>
                                 <connections>
-                                    <action selector="buttton2Clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="url-eE-Kab"/>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vF5-k5-9k8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8v-aI-NRE">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8v-aI-NRE">
                                 <rect key="frame" x="95" y="662" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="uk"/>
                                 <connections>
-                                    <action selector="buttton3Clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iVy-Dm-JE8"/>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wEd-w6-J8z"/>
                                 </connections>
                             </button>
                         </subviews>
