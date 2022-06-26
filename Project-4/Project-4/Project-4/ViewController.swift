@@ -48,6 +48,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
             ac.addAction(UIAlertAction(title: webSite, style: .default, handler: openPage))
 
         }
+        ac.addAction(UIAlertAction(title: "raywenderlich.com", style: .default, handler: openPage))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(ac, animated: true)
@@ -73,19 +74,26 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
-        
+        var isWebSiteValid = false
         if let host = url?.host {
             for webSite in webSites {
                 if host.contains(webSite) {
-                    decisionHandler(.allow)
-                    return
+                    isWebSiteValid = true
+                    break
                 }
             }
+            
+            if(isWebSiteValid){
+                decisionHandler(.allow)
+                return
+            }else {
+                let ac = UIAlertController(title: "Not Allowed !", message: "As per the policy you are not allowed to navigate to this website", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                present(ac, animated: true)
+            }
         }
-        
         decisionHandler(.cancel)
-    }
-    
 
+    }
 }
 
