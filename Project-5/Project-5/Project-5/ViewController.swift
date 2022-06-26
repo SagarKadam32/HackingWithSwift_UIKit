@@ -64,7 +64,7 @@ class ViewController: UITableViewController {
                     showErrorMessage(errorTitle: "Word not recognised", errorMessage: "You cant just make them up, you know!")
                 }
             }else {
-                showErrorMessage(errorTitle: "Work already used", errorMessage: "Be more original!")
+                showErrorMessage(errorTitle: "Word already used", errorMessage: "Be more original!")
             }
         }else {
             guard let title = title else {return}
