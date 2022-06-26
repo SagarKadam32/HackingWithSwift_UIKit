@@ -51,9 +51,33 @@ class ViewController: UITableViewController {
         
     }
     
-    func submit(_ answer: String){
-        
+    func submit(_ answer: String) {
+        let lowerAnser = answer.lowercased()
+    
+        if isPossible(word: lowerAnser){
+            if isOriginal(word: lowerAnser) {
+                if isRead(word: lowerAnser) {
+                    usedWords.insert(lowerAnser, at: 0)
+                    
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    tableView.insertRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
     }
+    
+    func isPossible(word: String) -> Bool {
+         return true
+    }
+    
+    func isOriginal(word: String) -> Bool {
+        return true
+    }
+    
+    func isRead(word: String) -> Bool {
+        return true
+    }
+    
     
 }
 
