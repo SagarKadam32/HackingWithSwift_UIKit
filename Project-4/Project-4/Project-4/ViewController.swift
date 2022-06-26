@@ -8,19 +8,16 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class ViewController: UITableViewController, WKNavigationDelegate {
     var webView : WKWebView!
     var progressView : UIProgressView!
     var webSites = ["apple.com","hackingwithswift.com"]
     
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        webView = WKWebView()
+        webView.navigationDelegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         
@@ -38,9 +35,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
         navigationController?.isToolbarHidden = false
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-        
-        let url = URL(string: "https://" + webSites[0])!
-        webView.load(URLRequest(url: url))
     }
     
     @objc func openTapped() {
@@ -61,6 +55,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
         guard let url =  URL(string: "https://" + actionTitle) else {return}
         webView.load(URLRequest(url: url))
         
+    }
+    
+    func openPage(actionTitle: String) {
+        guard let url =  URL(string: "https://" + actionTitle) else {return}
+        webView.load(URLRequest(url: url))
+        view = webView
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -97,5 +97,25 @@ class ViewController: UIViewController, WKNavigationDelegate {
         decisionHandler(.cancel)
 
     }
+}
+
+extension ViewController {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "website", for: indexPath)
+        cell.textLabel?.text = webSites[indexPath.row]
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return webSites.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openPage(actionTitle: webSites[indexPath.row])
+    }
+    
 }
 
