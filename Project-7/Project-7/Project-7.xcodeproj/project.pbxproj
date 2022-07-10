@@ -65,13 +65,13 @@
 				96C5DF192877678F00EB8E8C /* AppDelegate.swift */,
 				96C5DF1B2877678F00EB8E8C /* SceneDelegate.swift */,
 				96C5DF1D2877678F00EB8E8C /* ViewController.swift */,
+				966A4777287AB6C4000C1E10 /* DetailViewController.swift */,
 				966A4773287AB1DC000C1E10 /* Petition.swift */,
 				966A4775287AB2AD000C1E10 /* Petitions.swift */,
 				96C5DF1F2877678F00EB8E8C /* Main.storyboard */,
 				96C5DF222877679100EB8E8C /* Assets.xcassets */,
 				96C5DF242877679100EB8E8C /* LaunchScreen.storyboard */,
 				96C5DF272877679100EB8E8C /* Info.plist */,
-				966A4777287AB6C4000C1E10 /* DetailViewController.swift */,
 			);
 			path = "Project-7";
 			sourceTree = "<group>";
