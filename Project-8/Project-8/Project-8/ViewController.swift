@@ -119,6 +119,8 @@ class ViewController: UIViewController {
                 
                 let frame = CGRect(x: column * width, y: row * height, width: width, height: height)
                 letterButton.frame = frame
+                letterButton.layer.borderWidth = 1
+                letterButton.layer.borderColor = UIColor.lightGray.cgColor
       
                 buttonsview.addSubview(letterButton)
                 letterButtons.append(letterButton)
@@ -163,6 +165,11 @@ class ViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "Lets go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
+        }else {
+            let ac = UIAlertController(title: "Incorrect Guess!!", message: "Please clear and try one more time..", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Try again..", style: .default))
+            present(ac, animated: true)
+            
         }
     }
     
