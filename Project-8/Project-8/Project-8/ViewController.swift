@@ -166,6 +166,7 @@ class ViewController: UIViewController {
                 present(ac, animated: true)
             }
         }else {
+            score -= 1
             let ac = UIAlertController(title: "Incorrect Guess!!", message: "Please clear and try one more time..", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Try again..", style: .default))
             present(ac, animated: true)
