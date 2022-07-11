@@ -13,6 +13,8 @@
 		966A478D287BD016000C1E10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966A478B287BD016000C1E10 /* Main.storyboard */; };
 		966A478F287BD018000C1E10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966A478E287BD018000C1E10 /* Assets.xcassets */; };
 		966A4792287BD018000C1E10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966A4790287BD018000C1E10 /* LaunchScreen.storyboard */; };
+		966A479B287BE32D000C1E10 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 966A4799287BE32C000C1E10 /* level1.txt */; };
+		966A479C287BE32D000C1E10 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 966A479A287BE32C000C1E10 /* level2.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		966A478E287BD018000C1E10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966A4791287BD018000C1E10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		966A4793287BD018000C1E10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		966A4799287BE32C000C1E10 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		966A479A287BE32C000C1E10 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +60,15 @@
 		966A4784287BD016000C1E10 /* Project-8 */ = {
 			isa = PBXGroup;
 			children = (
+				966A4799287BE32C000C1E10 /* level1.txt */,
+				966A479A287BE32C000C1E10 /* level2.txt */,
 				966A4785287BD016000C1E10 /* AppDelegate.swift */,
 				966A4787287BD016000C1E10 /* SceneDelegate.swift */,
 				966A4789287BD016000C1E10 /* ViewController.swift */,
 				966A478B287BD016000C1E10 /* Main.storyboard */,
+				966A4793287BD018000C1E10 /* Info.plist */,
 				966A478E287BD018000C1E10 /* Assets.xcassets */,
 				966A4790287BD018000C1E10 /* LaunchScreen.storyboard */,
-				966A4793287BD018000C1E10 /* Info.plist */,
 			);
 			path = "Project-8";
 			sourceTree = "<group>";
@@ -125,7 +131,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966A479C287BE32D000C1E10 /* level2.txt in Resources */,
 				966A4792287BD018000C1E10 /* LaunchScreen.storyboard in Resources */,
+				966A479B287BE32D000C1E10 /* level1.txt in Resources */,
 				966A478F287BD018000C1E10 /* Assets.xcassets in Resources */,
 				966A478D287BD016000C1E10 /* Main.storyboard in Resources */,
 			);
