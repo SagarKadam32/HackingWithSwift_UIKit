@@ -89,15 +89,17 @@ class ViewController: UITableViewController {
     }
     
     func searchPetitionText(_ searchString: String) {
-        filteredPetitions.removeAll()
-        for petition in petitions {
         
-            if(petition.title.contains(searchString) || petition.body.contains(searchString)){
-                filteredPetitions.append(petition)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.filteredPetitions.removeAll()
+            for petition in self!.petitions {
+            
+                if(petition.title.contains(searchString) || petition.body.contains(searchString)){
+                    self?.filteredPetitions.append(petition)
+                }
             }
         }
-        tableView.reloadData()
-        
+        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
     }
 }
                                                                                                                                                                                                                     
