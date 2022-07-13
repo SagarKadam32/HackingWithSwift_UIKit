@@ -2,12 +2,13 @@
 //  Person.swift
 //  Project-10
 //
-//  Created by Sagar Kadam on 12/07/22.
+//  Created by Sagar Kadam on 13/07/22.
 //
 
 import UIKit
 
 class Person: NSObject {
+
     var name: String
     var image: String
     
