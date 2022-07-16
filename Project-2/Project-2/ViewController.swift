@@ -88,6 +88,13 @@ class ViewController: UIViewController {
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score : \(score)", style: .plain, target: self, action: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0, options: []) {
+            sender.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        } completion: { isFinished in
+            sender.transform = .identity
+        }
+
 
         if questionsCount == 10 {
             let ac = UIAlertController(title: "Game Over", message: "You have reached maximum question limit!", preferredStyle: .alert)
