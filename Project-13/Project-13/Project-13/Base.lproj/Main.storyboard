@@ -21,13 +21,12 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lyw-Yf-BrX">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="630"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="c5D-qs-SM4">
                                         <rect key="frame" x="0.0" y="650" width="394" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SW4-Hr-ysA">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dJo-i5-q5q"/>
                                                 </constraints>
@@ -36,7 +35,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LBh-t4-E8i">
-                                                <rect key="frame" x="54" y="0.0" width="342" height="41"/>
+                                                <rect key="frame" x="42" y="0.0" width="354" height="41"/>
+                                                <connections>
+                                                    <action selector="intensityChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vUQ-c3-M1a"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                     </stackView>
@@ -50,11 +52,17 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Change Filter"/>
+                                                <connections>
+                                                    <action selector="changeFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="png-C4-iRc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-gl-FSn">
                                                 <rect key="frame" x="197" y="0.0" width="197" height="44"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                                <connections>
+                                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nP0-rm-369"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -71,6 +79,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cSg-jq-Yen"/>
+                    <connections>
+                        <outlet property="imageView" destination="lyw-Yf-BrX" id="mVm-b5-Bzc"/>
+                        <outlet property="intensity" destination="LBh-t4-E8i" id="wPf-jQ-UaL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,9 +110,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
