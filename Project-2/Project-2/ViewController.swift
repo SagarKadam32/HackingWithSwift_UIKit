@@ -33,6 +33,11 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+
+    }
+    
     func askQuestions(action : UIAlertAction! = nil){
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
@@ -40,11 +45,24 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         title = "Find \(countries[correctAnswer].uppercased())\'s Flag ? "
-    }
+        showCongratsMessage()
+     }
     
     func restartGame(action : UIAlertAction! = nil){
         score = 0
         askQuestions()
+    }
+    
+    func showCongratsMessage() {
+        let defaults = UserDefaults.standard
+        let previousScore = defaults.integer(forKey: "score")
+        
+        /*
+        if(score > 0 && score > previousScore){
+            let ac = UIAlertController(title: "Congrats!!", message: "You have broke your previous score..", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
+            present(ac, animated: true)
+        }*/
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -61,6 +79,14 @@ class ViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
             present(ac, animated: true)
         }
+        
+        let defaults = UserDefaults.standard
+        let previousScore = defaults.integer(forKey: "score")
+
+        if(score > 0 && score > previousScore){
+            defaults.set(score, forKey: "score")
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score : \(score)", style: .plain, target: self, action: nil)
 
         if questionsCount == 10 {
