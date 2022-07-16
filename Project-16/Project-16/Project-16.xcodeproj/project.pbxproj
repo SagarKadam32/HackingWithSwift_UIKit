@@ -14,6 +14,7 @@
 		96317AD1288308A0001AF9EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96317AD0288308A0001AF9EE /* Assets.xcassets */; };
 		96317AD4288308A0001AF9EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96317AD2288308A0001AF9EE /* LaunchScreen.storyboard */; };
 		96317ADC28830B2C001AF9EE /* Capital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96317ADB28830B2C001AF9EE /* Capital.swift */; };
+		96317ADE2883395E001AF9EE /* CityDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96317ADD2883395E001AF9EE /* CityDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		96317AD3288308A0001AF9EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96317AD5288308A0001AF9EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96317ADB28830B2C001AF9EE /* Capital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capital.swift; sourceTree = "<group>"; };
+		96317ADD2883395E001AF9EE /* CityDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				96317AC92883089E001AF9EE /* SceneDelegate.swift */,
 				96317ACB2883089E001AF9EE /* ViewController.swift */,
 				96317ADB28830B2C001AF9EE /* Capital.swift */,
+				96317ADD2883395E001AF9EE /* CityDetailsView.swift */,
 				96317ACD2883089E001AF9EE /* Main.storyboard */,
 				96317AD0288308A0001AF9EE /* Assets.xcassets */,
 				96317AD2288308A0001AF9EE /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96317ADE2883395E001AF9EE /* CityDetailsView.swift in Sources */,
 				96317ACC2883089E001AF9EE /* ViewController.swift in Sources */,
 				96317AC82883089E001AF9EE /* AppDelegate.swift in Sources */,
 				96317ADC28830B2C001AF9EE /* Capital.swift in Sources */,

@@ -41,6 +41,40 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="83.705357142857139"/>
         </scene>
+        <!--City Details View-->
+        <scene sceneID="i1V-x1-b7K">
+            <objects>
+                <viewController storyboardIdentifier="CityDetails" id="rB1-NV-OVp" customClass="CityDetailsView" customModule="Project_16" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="41O-u0-zrO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlY-5E-ove">
+                                <rect key="frame" x="10" y="44" width="394" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZPP-Zt-qqA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZPP-Zt-qqA" firstAttribute="bottom" secondItem="VlY-5E-ove" secondAttribute="bottom" constant="10" id="WGc-GT-0TW"/>
+                            <constraint firstItem="VlY-5E-ove" firstAttribute="top" secondItem="ZPP-Zt-qqA" secondAttribute="top" id="edt-43-fic"/>
+                            <constraint firstItem="VlY-5E-ove" firstAttribute="leading" secondItem="ZPP-Zt-qqA" secondAttribute="leading" constant="10" id="lJ9-Up-k2J"/>
+                            <constraint firstItem="ZPP-Zt-qqA" firstAttribute="trailing" secondItem="VlY-5E-ove" secondAttribute="trailing" constant="10" id="ujm-NB-1Ll"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="VlY-5E-ove" id="NU0-To-K3L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mNG-ij-uTH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1636" y="95"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ngg-sz-qdt">
             <objects>

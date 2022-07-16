@@ -99,7 +99,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let placeInfo = capital.info
         
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+       // ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "Show Details", style: .default, handler: { _ in
+            // Navigate to the Wikipedia entry for the city.
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "CityDetails") as? CityDetailsView {
+                vc.cityTitle = placeName
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        }))
         present(ac, animated: true)
     }
 }
