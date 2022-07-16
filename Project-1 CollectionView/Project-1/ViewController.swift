@@ -8,8 +8,7 @@
 import UIKit
 
 class ViewController: UICollectionViewController {
-    var pictures = [String]()
-
+    var pictures = [Picture]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,39 +20,29 @@ class ViewController: UICollectionViewController {
         
         for item in items {
             if item.hasPrefix("nssl") {
-                pictures.append(item)
+                var picture = Picture(pictureName: item, viewedCount: 0)
+                pictures.append(picture)
             }
         }
-        pictures.sort()
+//      pictures.sort()
         print(pictures)
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        cell.textLabel?.text = pictures[indexPath.row]
-        return cell
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pictures.count
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.row]
-            vc.titleOfImage = "Picture \(indexPath.row + 1) of \(pictures.count)"
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }*/
-    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellLabel", for: indexPath) as? NameCollectionCell else {
             fatalError("Unable to deque Person Cell")
         }
-        cell.cellLabel.text = pictures[indexPath.row]
+        let picture = pictures[indexPath.row]
+
+        cell.cellLabel.text = picture.pictureName
+    
+        let defaults = UserDefaults.standard
+        let viewedCount = defaults.integer(forKey: "\(picture.pictureName)")
+        cell.viewedTimeLabel.text = "Viewed = \(viewedCount)"
         cell.layer.cornerRadius = 7
         return cell
         
@@ -65,13 +54,15 @@ class ViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.row]
+            var picture = pictures[indexPath.row]
+            let defaults = UserDefaults.standard
+            let viewedCount = defaults.integer(forKey: "\(picture.pictureName)")
+            defaults.set(viewedCount+1, forKey: "\(picture.pictureName)")
+            defaults.synchronize()
+            vc.selectedImage = picture.pictureName
             vc.titleOfImage = "Picture \(indexPath.row + 1) of \(pictures.count)"
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    
-
 }
 

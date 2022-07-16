@@ -9,5 +9,6 @@ import UIKit
 
 class NameCollectionCell: UICollectionViewCell {
     @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var viewedTimeLabel: UILabel!
     
 }
