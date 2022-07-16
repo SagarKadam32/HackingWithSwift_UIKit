@@ -142,7 +142,13 @@ class ViewController: UIViewController {
         
         currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
         activatedButtons.append(sender)
-        sender.isHidden = true
+       // sender.isHidden = true
+        UIView.animate(withDuration: 1, delay: 0, options: []) {
+            sender.alpha = 0.5
+        } completion: { isFinished in
+            sender.isHidden = true
+        }
+
         
     }
     
