@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
     @IBOutlet weak var changeFilterButton: UIButton!
+    @IBOutlet weak var radius: UISlider!
     
     var currentImage: UIImage!
     var context: CIContext!
@@ -97,6 +98,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         applyProcesing()
     }
     
+    
+    @IBAction func radiusChanged(_ sender: Any) {
+        applyProcesing()
+    }
+    
     func applyProcesing() {
         var currentFilterKey = ""
         let inputKeys = currentFilter.inputKeys
@@ -107,7 +113,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(radius.value * 200, forKey: kCIInputRadiusKey)
             currentFilterKey = kCIInputRadiusKey
         }
         
@@ -121,7 +127,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         guard let outputImage = currentFilter.outputImage else {return}
-//        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
         if let cgImage = context.createCGImage(outputImage, from: outputImage.extent){
             let processedImage = UIImage(cgImage: cgImage)
             imageView.image = processedImage
