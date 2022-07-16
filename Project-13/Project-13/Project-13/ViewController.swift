@@ -12,6 +12,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
+    @IBOutlet weak var changeFilterButton: UIButton!
+    
     var currentImage: UIImage!
     var context: CIContext!
     var currentFilter: CIFilter!
@@ -96,18 +98,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func applyProcesing() {
+        var currentFilterKey = ""
         let inputKeys = currentFilter.inputKeys
         
         if inputKeys.contains(kCIInputIntensityKey){
             currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+            currentFilterKey = kCIInputIntensityKey
         }
         
         if inputKeys.contains(kCIInputRadiusKey) {
             currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey)
+            currentFilterKey = kCIInputRadiusKey
         }
         
         if inputKeys.contains(kCIInputScaleKey) {
             currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey)
+            currentFilterKey = kCIInputScaleKey
         }
         
         if inputKeys.contains(kCIInputCenterKey) {
@@ -115,11 +121,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         guard let outputImage = currentFilter.outputImage else {return}
-        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+//        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
         if let cgImage = context.createCGImage(outputImage, from: outputImage.extent){
             let processedImage = UIImage(cgImage: cgImage)
             imageView.image = processedImage
         }
+        
+        changeFilterButton.setTitle(currentFilterKey, for: .normal)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {

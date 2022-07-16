@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="650" width="394" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SW4-Hr-ysA">
-                                                <rect key="frame" x="0.0" y="0.0" width="39" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="31" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dJo-i5-q5q"/>
                                                 </constraints>
@@ -35,7 +35,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LBh-t4-E8i">
-                                                <rect key="frame" x="42" y="0.0" width="354" height="41"/>
+                                                <rect key="frame" x="34" y="0.0" width="362" height="41"/>
                                                 <connections>
                                                     <action selector="intensityChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vUQ-c3-M1a"/>
                                                 </connections>
@@ -80,6 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cSg-jq-Yen"/>
                     <connections>
+                        <outlet property="changeFilterButton" destination="not-J8-OGi" id="JR9-vm-Pmc"/>
                         <outlet property="imageView" destination="lyw-Yf-BrX" id="mVm-b5-Bzc"/>
                         <outlet property="intensity" destination="LBh-t4-E8i" id="wPf-jQ-UaL"/>
                     </connections>
