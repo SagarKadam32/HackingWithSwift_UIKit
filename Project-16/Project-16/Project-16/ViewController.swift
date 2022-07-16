@@ -15,6 +15,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Select Map Type", style: .plain, target: self, action: #selector(changeMapType))
+
         let london = Capital(title: "London", coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), info: "Home to the 2012 Summer Olympics")
         let oslo = Capital(title: "Oslo", coordinate: CLLocationCoordinate2D(latitude: 59.95, longitude: 10.75), info: "Founded over a thousand of years ago")
         let paris = Capital(title: "Paris", coordinate: CLLocationCoordinate2D(latitude: 48.8675, longitude: 2.3508), info: "Often called the City of Light.")
@@ -29,9 +31,42 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(washington) */
         
         mapView.addAnnotations([london,oslo,paris,rome,washington])
-
+    }
+    
+    @objc func changeMapType() {
+        let ac = UIAlertController(title: "Choose Map Type", message: nil, preferredStyle: .actionSheet)
+        
+        ac.addAction(UIAlertAction(title: "Standard", style: .default, handler: setMapType))
+        ac.addAction(UIAlertAction(title: "Satellite", style: .default, handler: setMapType))
+        ac.addAction(UIAlertAction(title: "Hybrid", style: .default, handler: setMapType))
+        ac.addAction(UIAlertAction(title: "Satellite Flyover", style: .default, handler: setMapType))
+        ac.addAction(UIAlertAction(title: "Muted Standard", style: .default, handler: setMapType))
+        
+       present(ac,animated: true)
     }
 
+    func setMapType(action: UIAlertAction) {
+        var mapType : MKMapType
+        guard let actionTitle = action.title else {return}
+        
+        switch actionTitle {
+        case "Standard":
+            mapType = .standard
+        case "Satellite":
+            mapType = .satellite
+        case "Hybrid":
+            mapType = .hybrid
+        case "Satellite Flyover":
+            mapType = .hybridFlyover
+        case "Muted Standard":
+            mapType = .mutedStandard
+            
+        default:
+            mapType = .standard
+        }
+        
+        mapView.mapType = mapType
+    }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is Capital else {return nil}
