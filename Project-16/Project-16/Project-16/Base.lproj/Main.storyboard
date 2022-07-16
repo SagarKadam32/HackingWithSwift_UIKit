@@ -18,6 +18,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lR0-3n-PQl">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LPO-lY-gsR"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -29,6 +32,9 @@
                             <constraint firstItem="lR0-3n-PQl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="i1Y-VB-RKZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="lR0-3n-PQl" id="dI0-Ee-kmy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
