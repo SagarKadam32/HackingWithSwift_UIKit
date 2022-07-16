@@ -13,7 +13,7 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Start Game", style: .plain, target: self, action: #selector(startGame))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Start New Game", style: .plain, target: self, action: #selector(startGame))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
 
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
@@ -26,11 +26,29 @@ class ViewController: UITableViewController {
             allWords = ["silkworm"]
         }
       
-        startGame()
+        let defaults = UserDefaults.standard
+        let lastSavedTitle = defaults.string(forKey: "currentWord")
+        let usedSavedWords = defaults.object(forKey: "usedWords") as? [String]
+
+        if lastSavedTitle != nil {
+            title = lastSavedTitle
+        }
+        if let usedSavedWords = usedSavedWords {
+            usedWords = usedSavedWords
+        }
+
+        // startGame()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        defaults.set(title,forKey: "currentWord")
     }
     
     @objc func startGame() {
         title = allWords.randomElement()
+        let defaults = UserDefaults.standard
+        defaults.set(title,forKey: "currentWord")
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
     }
@@ -57,6 +75,8 @@ class ViewController: UITableViewController {
             if isOriginal(word: lowerAnser) {
                 if isReal(word: lowerAnser) {
                     usedWords.insert(lowerAnser, at: 0)
+                    let defaults = UserDefaults.standard
+                    defaults.set(usedWords, forKey: "usedWords")
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
                     return
