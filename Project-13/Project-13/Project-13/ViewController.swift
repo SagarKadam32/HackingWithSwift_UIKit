@@ -127,7 +127,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imageView.image = processedImage
         }
         
-        changeFilterButton.setTitle(currentFilterKey, for: .normal)
+        changeFilterButton.setTitle(currentFilterKey.uppercased(), for: .normal)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
