@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = titleOfImage
         navigationItem.largeTitleDisplayMode = .never
+        assert(selectedImage != nil, "Selected value has no associated Image..!!")
+        
         if let imageToLoad = selectedImage {
             imageView.image = UIImage(named: imageToLoad)
         }
